@@ -24,3 +24,14 @@ def calculate_variance(numbers):
 
 def calculate_std(numbers):
     return math.sqrt(calculate_variance(numbers))
+
+def calculate_pearson_correlation(x, y):
+    if len(x) != len(y) or len(x) < 2:
+        return 0.0
+    mean_x = calculate_mean(x)
+    mean_y = calculate_mean(y)
+    numerator = sum((xi - mean_x) * (yi - mean_y) for xi, yi in zip(x, y))
+    denom = math.sqrt(sum((xi - mean_x)**2 for xi in x) * sum((yi - mean_y)**2 for yi in y))
+    if denom == 0:
+        return 0.0
+    return numerator / denom
