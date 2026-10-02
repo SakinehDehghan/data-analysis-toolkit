@@ -35,3 +35,15 @@ def calculate_pearson_correlation(x, y):
     if denom == 0:
         return 0.0
     return numerator / denom
+
+def calculate_summary(numbers):
+    if not numbers:
+        return {}
+    return {
+        "count": len(numbers),
+        "min": min(numbers),
+        "max": max(numbers),
+        "mean": round(calculate_mean(numbers), 3),
+        "median": round(calculate_median(numbers), 3),
+        "std": round(calculate_std(numbers), 3),
+    }
