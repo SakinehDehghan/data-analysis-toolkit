@@ -21,3 +21,10 @@ def render_ascii_histogram(values, bins=5):
         range_label = f"[{min_v + i*step:.1f} - {min_v + (i+1)*step:.1f}]"
         lines.append(render_ascii_bar(range_label, counts[i], max_c))
     return '\n'.join(lines)
+
+def render_comparison_chart(metric_dict):
+    max_val = max(metric_dict.values()) if metric_dict else 1
+    output = []
+    for k, v in metric_dict.items():
+        output.append(render_ascii_bar(str(k), v, max_val))
+    return '\n'.join(output)
