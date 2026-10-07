@@ -28,3 +28,6 @@ def render_comparison_chart(metric_dict):
     for k, v in metric_dict.items():
         output.append(render_ascii_bar(str(k), v, max_val))
     return '\n'.join(output)
+
+def render_box_summary(name, summary):
+    return f"--- {name} ---\nMin: {summary.get('min')}, Median: {summary.get('median')}, Max: {summary.get('max')}\n"
