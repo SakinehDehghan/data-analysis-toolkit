@@ -1,0 +1,6 @@
+[
+  {\"customer_id\": 101, \"score\": 88.5, \"active_months\": 14},
+  {\"customer_id\": 102, \"score\": 92.0, \"active_months\": 24},
+  {\"customer_id\": 103, \"score\": 76.5, \"active_months\": 8},
+  {\"customer_id\": 104, \"score\": 84.0, \"active_months\": 18}
+]
