@@ -23,3 +23,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+# Helper entry function for module execution
+def run_cli():
+    main()
