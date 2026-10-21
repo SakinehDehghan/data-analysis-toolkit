@@ -26,3 +26,10 @@ def safe_cast_numeric(rows, columns):
                 except (ValueError, TypeError):
                     row[col] = None
     return rows
+
+def load_tsv(filepath):
+    if not os.path.exists(filepath):
+        raise FileNotFoundError(f"File not found: {filepath}")
+    with open(filepath, mode='r', encoding='utf-8') as f:
+        reader = csv.DictReader(f, delimiter='\t')
+        return list(reader)
