@@ -32,3 +32,13 @@ def rename_columns(rows, mapping):
             if old_col in r:
                 r[new_col] = r.pop(old_col)
     return rows
+
+def remove_duplicates(rows, key):
+    seen = set()
+    unique = []
+    for r in rows:
+        val = r.get(key)
+        if val not in seen:
+            seen.add(val)
+            unique.append(r)
+    return unique
