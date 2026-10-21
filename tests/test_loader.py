@@ -11,3 +11,9 @@ def test_safe_cast():
     safe_cast_numeric(sample, ["val"])
     assert sample[0]["val"] == 12.5
     assert sample[1]["val"] is None
+
+def test_remove_duplicates():
+    from toolkit.cleaner import remove_duplicates
+    rows = [{'id': 1}, {'id': 2}, {'id': 1}]
+    res = remove_duplicates(rows, 'id')
+    assert len(res) == 2
