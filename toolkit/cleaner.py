@@ -25,3 +25,10 @@ def detect_outliers_iqr(values, threshold=1.5):
     lower_bound = q1 - (threshold * iqr)
     upper_bound = q3 + (threshold * iqr)
     return [v for v in sorted_v if v < lower_bound or v > upper_bound]
+
+def rename_columns(rows, mapping):
+    for r in rows:
+        for old_col, new_col in mapping.items():
+            if old_col in r:
+                r[new_col] = r.pop(old_col)
+    return rows
