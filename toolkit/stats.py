@@ -55,3 +55,9 @@ def calculate_weighted_mean(numbers, weights):
     if total_w == 0:
         return 0.0
     return sum(n * w for n, w in zip(numbers, weights)) / total_w
+
+def calculate_harmonic_mean(numbers):
+    valid = [n for n in numbers if n > 0]
+    if not valid:
+        return 0.0
+    return len(valid) / sum(1.0 / n for n in valid)
