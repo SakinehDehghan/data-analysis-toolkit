@@ -47,3 +47,11 @@ def calculate_summary(numbers):
         "median": round(calculate_median(numbers), 3),
         "std": round(calculate_std(numbers), 3),
     }
+
+def calculate_weighted_mean(numbers, weights):
+    if len(numbers) != len(weights) or not numbers:
+        return 0.0
+    total_w = sum(weights)
+    if total_w == 0:
+        return 0.0
+    return sum(n * w for n, w in zip(numbers, weights)) / total_w
