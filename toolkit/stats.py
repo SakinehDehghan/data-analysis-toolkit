@@ -61,3 +61,10 @@ def calculate_harmonic_mean(numbers):
     if not valid:
         return 0.0
     return len(valid) / sum(1.0 / n for n in valid)
+
+def calculate_geometric_mean(numbers):
+    valid = [n for n in numbers if n > 0]
+    if not valid:
+        return 0.0
+    log_sum = sum(math.log(n) for n in valid)
+    return math.exp(log_sum / len(valid))
