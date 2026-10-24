@@ -42,3 +42,13 @@ def remove_duplicates(rows, key):
             seen.add(val)
             unique.append(r)
     return unique
+
+def detect_outliers_zscore(numbers, threshold=3.0):
+    if len(numbers) < 2:
+        return []
+    mean = sum(numbers) / len(numbers)
+    variance = sum((x - mean) ** 2 for x in numbers) / (len(numbers) - 1)
+    std = math.sqrt(variance)
+    if std == 0:
+        return []
+    return [x for x in numbers if abs((x - mean) / std) > threshold]
