@@ -68,3 +68,8 @@ def calculate_geometric_mean(numbers):
         return 0.0
     log_sum = sum(math.log(n) for n in valid)
     return math.exp(log_sum / len(valid))
+
+def calculate_moving_average(numbers, window_size=3):
+    if len(numbers) < window_size or window_size <= 0:
+        return []
+    return [sum(numbers[i:i+window_size]) / window_size for i in range(len(numbers) - window_size + 1)]
