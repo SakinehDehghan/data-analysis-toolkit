@@ -39,3 +39,12 @@ def render_sparkline(numbers):
     mn, mx = min(numbers), max(numbers)
     extent = (mx - mn) if mx != mn else 1
     return "".join(ticks[min(int((n - mn) / extent * (len(ticks) - 1)), len(ticks) - 1)] for n in numbers)
+
+def render_frequency_table(items):
+    counts = {}
+    for it in items:
+        counts[it] = counts.get(it, 0) + 1
+    lines = ["Value | Count", "------|------"]
+    for k, v in sorted(counts.items(), key=lambda x: x[1], reverse=True):
+        lines.append(f"{str(k).ljust(5)} | {v}")
+    return '\n'.join(lines)
