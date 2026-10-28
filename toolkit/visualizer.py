@@ -31,3 +31,11 @@ def render_comparison_chart(metric_dict):
 
 def render_box_summary(name, summary):
     return f"--- {name} ---\nMin: {summary.get('min')}, Median: {summary.get('median')}, Max: {summary.get('max')}\n"
+
+def render_sparkline(numbers):
+    ticks = [' ', '▂', '▃', '▄', '▅', '▆', '▇', '█']
+    if not numbers:
+        return ""
+    mn, mx = min(numbers), max(numbers)
+    extent = (mx - mn) if mx != mn else 1
+    return "".join(ticks[min(int((n - mn) / extent * (len(ticks) - 1)), len(ticks) - 1)] for n in numbers)
