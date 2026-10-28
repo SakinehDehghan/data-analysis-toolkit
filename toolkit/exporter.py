@@ -18,3 +18,12 @@ def export_json_report(data, output_path):
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2)
     return output_path
+
+def export_csv_summary(summaries, output_path):
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(["Metric", "Count", "Min", "Max", "Mean", "Median", "Std"])
+        for name, s in summaries.items():
+            writer.writerow([name, s.get('count'), s.get('min'), s.get('max'), s.get('mean'), s.get('median'), s.get('std')])
+    return output_path
