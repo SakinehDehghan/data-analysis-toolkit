@@ -73,3 +73,8 @@ def calculate_moving_average(numbers, window_size=3):
     if len(numbers) < window_size or window_size <= 0:
         return []
     return [sum(numbers[i:i+window_size]) / window_size for i in range(len(numbers) - window_size + 1)]
+
+def calculate_percentage_change(numbers):
+    if len(numbers) < 2:
+        return []
+    return [round(((numbers[i] - numbers[i-1]) / numbers[i-1]) * 100, 2) for i in range(1, len(numbers))]
