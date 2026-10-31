@@ -33,3 +33,9 @@ def load_tsv(filepath):
     with open(filepath, mode='r', encoding='utf-8') as f:
         reader = csv.DictReader(f, delimiter='\t')
         return list(reader)
+
+def load_multiple_csv(file_list):
+    all_data = []
+    for fp in file_list:
+        all_data.extend(load_csv(fp))
+    return all_data
