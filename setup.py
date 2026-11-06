@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="data-analysis-toolkit",
-    version="1.0.0",
+    version="1.0.1",
     author="Sakineh Dehghan",
     author_email="stats.data.official@gmail.com",
     description="Statistical data analysis and reporting toolkit",
