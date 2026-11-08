@@ -45,3 +45,8 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
+## Advanced Features
+- Sparkline visualizer in console
+- Moving average and percentage changes
+- TSV and multi-file batch loaders
