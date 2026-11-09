@@ -1,169 +1,162 @@
-# Data Analysis Toolkit 📊
+# Data Analysis Toolkit
 
-<div align="center">
+An academic, pure-Python toolkit for statistical data analysis, descriptive modeling, data sanitization, and automated reporting.
 
-<p align="center">
-  <strong>A lightweight, pure-Python toolkit for statistical data analysis, preprocessing, ASCII visual reporting, and automated workflows.</strong>
-</p>
-
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python Version" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/Version-1.0.1-blue?style=for-the-badge" alt="Version" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/Coverage-100%25-brightgreen?style=for-the-badge" alt="Coverage" /></a>
-</p>
-
-<p align="center">
-  <a href="#about-the-project">About</a> •
-  <a href="#features">Features</a> •
-  <a href="#project-structure">Structure</a> •
-  <a href="#getting-started">Getting Started</a> •
-  <a href="#usage">Usage</a> •
-  <a href="#running-tests">Tests</a> •
-  <a href="#contributing">Contributing</a> •
-  <a href="#license">License</a>
-</p>
-
-</div>
+[![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
+[![Affiliation](https://img.shields.io/badge/Affiliation-Shahid%20Beheshti%20University-green.svg)](https://en.sbu.ac.ir/)
 
 ---
 
-## 📖 About The Project
+## Overview
 
-**Data Analysis Toolkit** is a standalone, dependency-free Python toolkit engineered to simplify descriptive statistical analysis, dataset cleaning, and console-friendly visualizations. It provides quick insights into tabular data without the heavy overhead of large third-party libraries.
+The **Data Analysis Toolkit** is designed for rigorous statistical computation, robust exploratory data analysis (EDA), and automated report synthesis. Developed with zero external runtime dependencies, it provides verified implementations of standard parametric and non-parametric statistics, missing value imputation protocols, and outlier detection mechanisms.
 
-### Key Highlights:
-- ⚡ **Pure Python & Zero External Dependencies:** Runs instantly on any standard Python 3.8+ environment.
-- 📈 **Terminal ASCII Visuals:** Generates histograms, sparklines, and metric comparison charts directly in the console.
-- 🛡️ **Robust Data Hygiene:** Outlier filtering via IQR and Z-Score, safe numeric typecasting, and configurable missing-value imputation.
-- 📑 **Multi-Format Exporting:** Seamlessly exports reports in Markdown, JSON, and CSV formats.
-
----
-
-## ✨ Features
-
-- [x] **Descriptive Statistics:** Calculate Mean, Median, Variance, Standard Deviation, Weighted Mean, Harmonic Mean, Geometric Mean, and Pearson Correlation.
-- [x] **Data Cleaning & Validation:** IQR and Z-Score outlier detection, duplicate removal, column renaming, and schema verification.
-- [x] **Lightweight Visualizations:** In-console ASCII histograms, bar charts, and horizontal sparklines.
-- [x] **Flexible Data Loaders:** Streamlined loading for CSV, TSV, and JSON formats with batch dataset support.
-- [x] **Automated Reporting:** Generate professional Markdown, CSV, and JSON statistical reports.
-- [x] **Automated CI/CD:** GitHub Actions workflow included for automated testing on every push.
+### Core Objectives
+* **Deterministic Computation:** Pure-Python mathematical and statistical routines ensuring cross-platform repeatability.
+* **Data Sanitization & Hygiene:** Standardized protocols for handling missing observations, type inference, and boundary verification.
+* **Lightweight Terminal Diagnostics:** Console-based diagnostic histograms and sparkline distributions for rapid inspection.
+* **Reproducible Reporting:** Programmatic generation of Markdown, JSON, and tabular CSV analytical summaries.
 
 ---
 
-## 🏗️ Project Structure
+## Theoretical & Methodological Foundations
+
+The toolkit implements the following core statistical methodologies:
+
+1. **Location Estimators:**
+   * Arithmetic Mean: $\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i$
+   * Weighted Mean: $\bar{x}_w = \frac{\sum w_i x_i}{\sum w_i}$
+   * Median and robust percentiles.
+   * Geometric and Harmonic central tendencies.
+
+2. **Dispersion & Association:**
+   * Sample Variance ($s^2$) with Bessel's correction ($n-1$ denominator).
+   * Standard Deviation ($s$).
+   * Pearson Product-Moment Correlation Coefficient ($r_{xy}$).
+
+3. **Anomaly & Outlier Identification:**
+   * Tukey's Interquartile Range (IQR) Rule: Fences at $[Q_1 - 1.5 \cdot \text{IQR}, Q_3 + 1.5 \cdot \text{IQR}]$.
+   * Standardized Z-Score criterion ($|z| > 3.0$).
+
+---
+
+## Repository Structure
 
 ```plaintext
 data-analysis-toolkit/
-├── toolkit/                # Core toolkit package
-│   ├── __init__.py         # Package entry and versioning
-│   ├── config.py           # Configuration parameters and thresholds
-│   ├── loader.py           # CSV, TSV, and JSON data loaders
-│   ├── cleaner.py          # Data cleaning, imputing, and outlier filters
-│   ├── stats.py            # Comprehensive statistical calculations
-│   ├── visualizer.py       # ASCII histograms, sparklines, and charts
-│   ├── exporter.py         # Markdown, JSON, and CSV report exporters
-│   ├── validator.py        # Schema and column validator
-│   └── exceptions.py       # Domain-specific exception classes
-├── data/                   # Sample datasets for testing
-│   ├── sales_data.csv      # Sample sales records
-│   └── customer_metrics.json # Sample customer performance metrics
-├── tests/                  # Automated unit test suite
-│   ├── test_loader.py      # Data loading and cleaning tests
-│   └── test_stats.py       # Statistical function tests
-├── .github/workflows/      # GitHub Actions CI workflow (ci.yml)
-├── CHANGELOG.md            # Release history and updates
-├── CONTRIBUTING.md         # Open-source contribution guidelines
-├── requirements.txt        # Development and testing requirements
-├── setup.py                # Package installation and distribution
-├── LICENSE                 # MIT License
-└── README.md               # Project documentation
+├── toolkit/                  # Core package implementation
+│   ├── __init__.py           # Package namespace and version metadata
+│   ├── config.py             # Numerical thresholds and parameters
+│   ├── loader.py             # Delimited and structured data loaders
+│   ├── cleaner.py            # Preprocessing, imputation, and outlier filters
+│   ├── stats.py              # Statistical estimation functions
+│   ├── visualizer.py         # Terminal diagnostic visualizations
+│   ├── exporter.py           # Structured analytical export utilities
+│   ├── validator.py          # Data schema and type integrity checkers
+│   └── exceptions.py         # Domain-specific exception definitions
+├── data/                     # Demonstration datasets
+│   ├── sales_data.csv        # Tabular bivariate dataset
+│   └── customer_metrics.json # Semi-structured metrics records
+├── tests/                    # Verification and test suites
+│   ├── test_loader.py        # Loader and sanitization test cases
+│   └── test_stats.py         # Statistical calculation test cases
+├── .github/workflows/        # Continuous integration workflows
+├── CHANGELOG.md              # Version and modification records
+├── CONTRIBUTING.md           # Collaboration and contribution guidelines
+├── requirements.txt          # Development dependencies
+├── setup.py                  # Package specification
+├── LICENSE                   # Licensing terms
+└── README.md                 # Primary project documentation
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Python 3.8 or higher
-- Git
+* Python 3.8 or higher
+* Git
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/SakinehDehghan/data-analysis-toolkit.git
-   cd data-analysis-toolkit
-   ```
+Clone the repository to your local environment:
 
-2. (Optional) Create and activate a virtual environment:
-   ```bash
-   python -m venv .venv
-   # Windows:
-   .venv\Scripts\activate
-   # Linux/macOS:
-   source .venv/bin/activate
-   ```
+```bash
+git clone https://github.com/SakinehDehghan/data-analysis-toolkit.git
+cd data-analysis-toolkit
+```
 
-3. Install testing dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Optionally, initialize an isolated virtual environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+Install verification dependencies:
+
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## 💡 Usage
+## Usage
 
-### CLI Execution
-Run the end-to-end demo directly from your terminal:
+### Command-Line Execution
+Run the integrated analytical demonstration pipeline:
+
 ```bash
 python main.py
 ```
 
-### Programmatic Python API
+### Programmatic API
+Import modules directly into research scripts or workflows:
+
 ```python
 from toolkit.loader import load_csv, safe_cast_numeric
 from toolkit.stats import calculate_summary, calculate_pearson_correlation
 from toolkit.visualizer import render_ascii_histogram
 
-# 1. Load data
-rows = load_csv("data/sales_data.csv")
-safe_cast_numeric(rows, ["units_sold", "revenue"])
+# Load and cast tabular observations
+records = load_csv("data/sales_data.csv")
+safe_cast_numeric(records, ["units_sold", "revenue"])
 
-# 2. Extract series and calculate summary
-units = [r["units_sold"] for r in rows if r["units_sold"] is not None]
-summary = calculate_summary(units)
-print("Summary:", summary)
+# Extract variables
+units = [r["units_sold"] for r in records if r["units_sold"] is not None]
+revenue = [r["revenue"] for r in records if r["revenue"] is not None]
 
-# 3. Render terminal histogram
+# Compute summary statistics and association
+stats_summary = calculate_summary(units)
+correlation = calculate_pearson_correlation(units, revenue)
+
+# Render terminal distribution
 print(render_ascii_histogram(units, bins=4))
 ```
 
 ---
 
-## 🧪 Running Tests
+## Verification & Testing
 
-To run the automated test suite with pytest:
+The package includes automated tests covering statistical accuracy and data handling edge cases:
+
 ```bash
 pytest
 ```
 
 ---
 
-## 🤝 Contributing
+## License
 
-Contributions are welcome! Please review [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct and the submission process.
-
----
-
-## 📜 License
-
-Distributed under the **MIT License**. See [LICENSE](./LICENSE) for details.
+This project is licensed under the terms of the **MIT License**. Refer to the [LICENSE](LICENSE) file for complete details.
 
 ---
 
-## 👤 Author
+## Author & Academic Affiliation
 
-**Sakineh Dehghan**
-- GitHub: [@SakinehDehghan](https://github.com/SakinehDehghan)
-- Email: stats.data.official@gmail.com
+**Sakineh Dehghan**  
+Department of Statistics, Shahid Beheshti University (SBU)  
+* Email: [Sa_dehghan@Sbu.ac.ir](mailto:Sa_dehghan@Sbu.ac.ir)  
+* GitHub: [@SakinehDehghan](https://github.com/SakinehDehghan)
